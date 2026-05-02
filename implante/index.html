@@ -202,10 +202,10 @@
   }
 
   @keyframes scrollDown {
-    0%   { transform: scaleY(0); transform-origin: top; }
-    50%  { transform: scaleY(1); transform-origin: top; }
-    51%  { transform: scaleY(1); transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
+    0%   { opacity: 0; transform: translateY(-10px); }
+    30%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(10px); }
   }
 
   /* ============================================
@@ -934,7 +934,7 @@
       <div class="hero__cta-grupo">
         <a href="#" onclick="window.open('https://wa.me/5519994256232?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20implante%20dental.','_blank');return false;" class="btn-whatsapp">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L.057 23.571a.5.5 0 0 0 .613.613l5.701-1.471A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.001-1.372l-.359-.213-3.724.96.987-3.609-.234-.371A9.818 9.818 0 1 1 12 21.818z"/></svg>
-          Agendar avaliação gratuita
+          Agendar avaliação
         </a>
         
       </div>
@@ -970,8 +970,8 @@
       <div class="problema__visual">
         <div class="problema__numero" aria-hidden="true">5★</div>
         <div class="problema__card">
-          <p class="problema__card-titulo">O que pacientes dizem antes da primeira consulta</p>
-          <p>"Eu já estava acostumada com a prótese. Achei que não tinha outra saída. Quando vi o resultado do implante, não acreditei que tinha esperado tanto tempo."</p>
+          <p class="problema__card-titulo">"Fiquei extremamente satisfeito com o atendimento da Dra. Júlia Hoss. Ela foi incrivelmente carinhosa, atenciosa e demonstrou grande competência ao cuidar da minha saúde bucal. Recomendo a clínica a todos."</p>
+          <p style="margin-top:20px;font-size:0.8rem;letter-spacing:0.08em;color:#C5A059;text-transform:uppercase;">Luan Gabriel · Local Guide · Google ★★★★★</p>
         </div>
       </div>
     </div>
@@ -1032,9 +1032,9 @@
       </div>
       <div class="julia__texto">
         <span class="label-secao">Quem cuida de você</span>
-        <h2>Dra. Júlia Hoss.<br><em>Especialista em implantes</em><br>formada nas melhores escolas do país.</h2>
+        <h2>Dra. Júlia Hoss.<br><em>Especialista em implantes</em><br>com especialização nas principais referências da odontologia no Brasil.</h2>
         <p>
-          Fiz minha especialização em Implantodontia no São Leopoldo Mandic e meu aperfeiçoamento em cirurgias de implantes na USP. Não é só titulação. É saber o que fazer quando o caso é simples e, principalmente, quando não é.
+          Fiz minha especialização em Implantodontia no São Leopoldo Mandic e meu aperfeiçoamento em cirurgias de implantes na USP. São duas das referências mais reconhecidas da área no Brasil. Não é só titulação. É saber o que fazer quando o caso é simples e, principalmente, quando não é.
         </p>
         <p>
           Sei que muita gente chega com medo. Do procedimento, da dor, do resultado. Trabalho devagar, com atenção ao que você está sentindo, em cada etapa. Isso faz diferença no que você experimenta na cadeira e no resultado final.
@@ -1245,7 +1245,7 @@
   <p>
     © 2026 Dra. Júlia Hoss · CRO-SP 157 099 · Cirurgiã-Dentista · Rua Barbosa da Cunha, 754, Sala 10, Campinas-SP<br>
     Seus dados são utilizados apenas para contato e agendamento, conforme nossa
-    <a href="/politica-de-privacidade" target="_blank">Política de Privacidade</a>.
+    <a href="https://www.drajuliahoss.com/politica-de-privacidade" target="_blank">Política de Privacidade</a>.
     Em conformidade com a Lei Geral de Proteção de Dados (LGPD · Lei 13.709/2018).
   </p>
 </footer>
