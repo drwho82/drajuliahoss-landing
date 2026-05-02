@@ -1250,10 +1250,27 @@
   </p>
 </footer>
 
-<!-- ============================================
-     JAVASCRIPT — FAQ ACCORDION
-============================================ -->
 <script>
+  // Comunicar altura real ao Wix
+  function sendHeight() {
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+    window.parent.postMessage(JSON.stringify({type: 'height', value: h}), '*');
+    window.parent.postMessage({height: h}, '*');
+  }
+
+  window.addEventListener('load', function() {
+    sendHeight();
+    setTimeout(sendHeight, 800);
+    setTimeout(sendHeight, 2000);
+    setTimeout(sendHeight, 4000);
+  });
+
+  window.addEventListener('resize', sendHeight);
+
+  // FAQ Accordion
   document.querySelectorAll('.faq__pergunta').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var item = this.closest('.faq__item');
@@ -1266,23 +1283,10 @@
         item.classList.add('aberto');
         this.setAttribute('aria-expanded', 'true');
       }
+      setTimeout(sendHeight, 400);
     });
   });
 </script>
 
 </body>
 </html>
-
-<!-- Auto-resize para Wix iframe -->
-<script>
-  function notifyHeight() {
-    var height = document.body.scrollHeight;
-    window.parent.postMessage({ type: 'wix-height', height: height }, '*');
-  }
-  window.addEventListener('load', notifyHeight);
-  window.addEventListener('resize', notifyHeight);
-  // Checa novamente após fontes e imagens carregarem
-  setTimeout(notifyHeight, 500);
-  setTimeout(notifyHeight, 1500);
-  setTimeout(notifyHeight, 3000);
-</script>
