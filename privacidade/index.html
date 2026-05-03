@@ -8,126 +8,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --petroleo:  #2C3E50;
-    --dourado:   #C5A059;
-    --cinza:     #2D2D2D;
-    --cinza-mid: #6B6B6B;
-    --areia:     #D6CFC7;
-    --branco:    #FFFFFF;
-    --fundo:     #F4F2EF;
+    --petroleo: #2C3E50;
+    --dourado:  #C5A059;
+    --cinza:    #2D2D2D;
+    --cinza-mid:#6B6B6B;
+    --areia:    #D6CFC7;
+    --branco:   #FFFFFF;
+    --fundo:    #F4F2EF;
   }
-
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--fundo);
-    color: var(--cinza);
-    -webkit-font-smoothing: antialiased;
-    padding: 0;
-    margin: 0;
-  }
-
-  .header {
-    background: var(--petroleo);
-    padding: 40px 24px;
-    text-align: center;
-  }
-
-  .header h1 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 400;
-    color: var(--branco);
-    margin-bottom: 8px;
-  }
-
-  .header p {
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: var(--areia);
-    letter-spacing: 0.05em;
-  }
-
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 64px 24px;
-  }
-
-  .secao {
-    margin-bottom: 48px;
-  }
-
-  .secao h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--petroleo);
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--areia);
-  }
-
-  .secao p {
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--cinza-mid);
-    margin-bottom: 14px;
-  }
-
-  .secao ul {
-    list-style: none;
-    margin: 14px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .secao ul li {
-    display: flex;
-    gap: 12px;
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.7;
-    color: var(--cinza-mid);
-  }
-
-  .secao ul li::before {
-    content: '';
-    width: 16px;
-    height: 1px;
-    background: var(--dourado);
-    margin-top: 12px;
-    flex-shrink: 0;
-  }
-
-  .secao a {
-    color: var(--dourado);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .destaque {
-    background: var(--branco);
-    border-left: 3px solid var(--dourado);
-    padding: 20px 24px;
-    margin: 20px 0;
-    font-size: 0.9rem;
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--petroleo);
-  }
-
-  .footer {
-    background: var(--petroleo);
-    padding: 24px;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: rgba(214,207,199,0.5);
-  }
+  body { font-family: 'Jost', sans-serif; background: var(--fundo); color: var(--cinza); -webkit-font-smoothing: antialiased; }
+  .header { background: var(--petroleo); padding: 40px 24px; text-align: center; }
+  .header h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 400; color: var(--branco); margin-bottom: 8px; }
+  .header p { font-size: 0.8rem; font-weight: 300; color: var(--areia); letter-spacing: 0.05em; }
+  .voltar-bar { background: var(--petroleo); padding: 0 24px 24px; }
+  .voltar-link { display: inline-flex; align-items: center; gap: 8px; color: var(--dourado); font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
+  .container { max-width: 780px; margin: 0 auto; padding: 64px 24px; }
+  .secao { margin-bottom: 48px; }
+  .secao h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; font-weight: 500; color: var(--petroleo); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--areia); }
+  .secao p { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--cinza-mid); margin-bottom: 14px; }
+  .secao ul { list-style: none; margin: 14px 0; display: flex; flex-direction: column; gap: 10px; }
+  .secao ul li { display: flex; gap: 12px; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: var(--cinza-mid); }
+  .secao ul li::before { content: ''; width: 16px; height: 1px; background: var(--dourado); margin-top: 12px; flex-shrink: 0; }
+  .secao a { color: var(--dourado); text-decoration: underline; text-underline-offset: 2px; }
+  .destaque { background: var(--branco); border-left: 3px solid var(--dourado); padding: 20px 24px; margin: 20px 0; font-size: 0.9rem; font-weight: 400; line-height: 1.7; color: var(--petroleo); }
+  .footer { background: var(--petroleo); padding: 24px; text-align: center; font-size: 0.75rem; font-weight: 300; color: rgba(214,207,199,0.5); }
 </style>
 </head>
 <body>
@@ -137,8 +42,8 @@
   <p>Última atualização: maio de 2026</p>
 </div>
 
-<div style="background:#2C3E50;padding:0 24px 24px;text-align:left;">
-  <a href="https://dente.drajuliahoss.com/implante" style="display:inline-flex;align-items:center;gap:8px;color:#C5A059;font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;">
+<div class="voltar-bar">
+  <a id="btnVoltar" class="voltar-link" href="https://dente.drajuliahoss.com/implante">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
     Voltar
   </a>
@@ -159,7 +64,7 @@
       <li>Nome, quando fornecido voluntariamente via formulário ou mensagem</li>
       <li>Número de telefone ou WhatsApp, quando você inicia contato por esse canal</li>
       <li>Endereço de e-mail, quando utilizado para contato</li>
-      <li>Dados de navegação anônimos (páginas acessadas, tempo de visita), coletados automaticamente pelo Wix para fins de desempenho do site</li>
+      <li>Dados de navegação anônimos (páginas acessadas, tempo de visita), coletados automaticamente para fins de desempenho do site</li>
     </ul>
     <p>Não coletamos dados de saúde, documentos de identificação ou informações financeiras por meio deste site.</p>
   </div>
@@ -189,9 +94,9 @@
     <h2>5. Com quem compartilhamos seus dados</h2>
     <p>Seus dados podem ser processados pelas seguintes plataformas, utilizadas para operação do site e comunicação:</p>
     <ul>
-      <li>Wix.com — plataforma de hospedagem do site (política de privacidade disponível em wix.com/about/privacy)</li>
       <li>WhatsApp Business — canal de atendimento e agendamento (Meta Platforms)</li>
-      <li>Google — ferramentas de análise de desempenho de campanhas</li>
+      <li>Google — ferramentas de análise de desempenho de campanhas (Google Analytics e Google Ads)</li>
+      <li>GitHub Pages — hospedagem das páginas de agendamento</li>
     </ul>
     <p>Nenhum dado é vendido ou cedido a terceiros para fins publicitários.</p>
   </div>
@@ -199,7 +104,7 @@
   <div class="secao">
     <h2>6. Por quanto tempo guardamos seus dados</h2>
     <p>Os dados de contato são mantidos pelo tempo necessário para o atendimento solicitado. Dados de pacientes em tratamento são mantidos conforme exigido pela legislação sanitária e pelo Código de Ética Odontológica.</p>
-    <p>Dados de navegação anônimos são retidos conforme a política da plataforma Wix.</p>
+    <p>Dados de navegação anônimos são retidos conforme a política do Google Analytics.</p>
   </div>
 
   <div class="secao">
@@ -220,7 +125,7 @@
 
   <div class="secao">
     <h2>8. Cookies e rastreamento</h2>
-    <p>O site utiliza cookies técnicos necessários para seu funcionamento, gerenciados pela plataforma Wix. Podem ser utilizados cookies de análise de desempenho para campanhas do Google Ads, que coletam dados de forma anonimizada.</p>
+    <p>O site utiliza cookies técnicos necessários para seu funcionamento. São utilizados cookies de análise de desempenho do Google Analytics e Google Ads, que coletam dados de forma anonimizada para mensurar o desempenho das campanhas.</p>
     <p>Você pode configurar seu navegador para recusar cookies, mas isso pode afetar o funcionamento de algumas partes do site.</p>
   </div>
 
@@ -247,6 +152,24 @@
 <div class="footer">
   © 2026 Dra. Júlia Hoss · Em conformidade com a LGPD — Lei nº 13.709/2018
 </div>
+
+<script>
+  // Botão Voltar dinâmico.
+  // Detecta de qual página do domínio o visitante veio
+  // e aponta o link de volta para essa origem.
+  // Se veio de fora do domínio (ex: Google direto), usa o fallback.
+  (function() {
+    var dominio = 'dente.drajuliahoss.com';
+    var fallback = 'https://dente.drajuliahoss.com/implante';
+    var btn = document.getElementById('btnVoltar');
+    try {
+      var ref = document.referrer;
+      btn.href = (ref && ref.indexOf(dominio) !== -1) ? ref : fallback;
+    } catch(e) {
+      btn.href = fallback;
+    }
+  })();
+</script>
 
 </body>
 </html>
