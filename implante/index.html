@@ -1261,7 +1261,9 @@
 </footer>
 
 <script>
-  // FAQ Accordion
+  // ============================================
+  // FAQ ACCORDION
+  // ============================================
   document.querySelectorAll('.faq__pergunta').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var item = this.closest('.faq__item');
@@ -1273,8 +1275,95 @@
       if (!aberto) {
         item.classList.add('aberto');
         this.setAttribute('aria-expanded', 'true');
+
+        // EVENTO: clique no FAQ
+        var pergunta = btn.querySelector('.faq__pergunta') 
+          ? btn.querySelector('.faq__pergunta').textContent.trim()
+          : btn.textContent.trim();
+        gtag('event', 'faq_click_implante', {
+          event_category: 'engajamento',
+          event_label: pergunta.substring(0, 80)
+        });
       }
     });
+  });
+
+  // ============================================
+  // TEMPO ATÉ O PRIMEIRO CLIQUE NO WHATSAPP
+  // ============================================
+  var pageLoadTime = Date.now();
+  var primeiroClique = true;
+
+  document.querySelectorAll('.btn-whatsapp').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (primeiroClique) {
+        primeiroClique = false;
+        var segundos = Math.round((Date.now() - pageLoadTime) / 1000);
+        gtag('event', 'tempo_ate_clique_implante', {
+          event_category: 'engajamento',
+          event_label: btn.getAttribute('onclick') ? btn.getAttribute('onclick').match(/event_label':'([^']+)'/)?.[1] || 'desconhecido' : 'desconhecido',
+          value: segundos
+        });
+      }
+    });
+  });
+
+  // ============================================
+  // SCROLL DEPTH POR SEÇÃO (Intersection Observer)
+  // ============================================
+  var secoes = [
+    { selector: '.problema',    label: 'secao_problema'    },
+    { selector: '.solucao',     label: 'secao_solucao'     },
+    { selector: '.julia',       label: 'secao_julia'       },
+    { selector: '.depoimentos', label: 'secao_depoimentos' },
+    { selector: '.como',        label: 'secao_como'        },
+    { selector: '.faq',         label: 'secao_faq'         },
+    { selector: '.cta-final',   label: 'secao_cta_final'   }
+  ];
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var label = entry.target.getAttribute('data-secao');
+          if (label) {
+            gtag('event', 'scroll_secao_implante', {
+              event_category: 'engajamento',
+              event_label: label
+            });
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    secoes.forEach(function(s) {
+      var el = document.querySelector(s.selector);
+      if (el) {
+        el.setAttribute('data-secao', s.label);
+        observer.observe(el);
+      }
+    });
+  }
+
+  // ============================================
+  // SAÍDA DA PÁGINA SEM CONVERSÃO
+  // ============================================
+  var converteu = false;
+
+  document.querySelectorAll('.btn-whatsapp').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      converteu = true;
+    });
+  });
+
+  window.addEventListener('beforeunload', function() {
+    if (!converteu) {
+      gtag('event', 'saida_sem_conversao_implante', {
+        event_category: 'engajamento',
+        event_label: 'saiu_sem_clicar'
+      });
+    }
   });
 </script>
 
