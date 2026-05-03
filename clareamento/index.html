@@ -32,15 +32,17 @@
     .hero__selo span{font-size:0.72rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--dourado);}
     .hero h1{font-family:var(--ft);font-size:clamp(2.6rem,4.5vw,4rem);font-weight:300;line-height:1.15;color:var(--petroleo);margin-bottom:24px;}
     .hero h1 em{font-style:italic;color:var(--dourado);}
-    .hero__sub{font-size:clamp(0.95rem,1.2vw,1.15rem);font-weight:300;line-height:1.75;color:var(--cinza-mid);max-width:420px;margin-bottom:40px;}
+    /* FIX: subtítulo proporcional, sem max-width fixo */
+    .hero__sub{font-size:clamp(0.95rem,1.2vw,1.15rem);font-weight:300;line-height:1.75;color:var(--cinza-mid);margin-bottom:40px;}
     .btn-wa{display:inline-flex;align-items:center;gap:12px;background:var(--petroleo);color:var(--branco);text-decoration:none;padding:16px 32px;font-family:var(--fb);font-size:0.82rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;transition:background .3s;align-self:flex-start;}
     .btn-wa:hover{background:var(--dourado);}
+    /* FIX: credencial inline no fluxo esquerdo, largura pelo conteúdo */
+    .hero__credencial{align-self:flex-start;margin-top:28px;background:var(--branco);padding:16px 24px;border-left:3px solid var(--dourado);}
+    .hero__credencial p{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--petroleo);font-weight:400;}
+    .hero__credencial span{font-size:0.65rem;color:var(--cinza-mid);font-weight:300;}
     .hero__imagem{position:relative;overflow:hidden;}
     .hero__imagem img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
     .hero__imagem-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--off-white) 0%,transparent 20%);}
-    .hero__credencial{display:inline-block;margin-top:28px;background:var(--branco);padding:16px 24px;border-left:3px solid var(--dourado);}
-    .hero__credencial p{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--petroleo);font-weight:400;}
-    .hero__credencial span{font-size:0.65rem;color:var(--cinza-mid);font-weight:300;}
 
     /* IDENTIFICAÇÃO */
     .identificacao{background:var(--petroleo);padding:88px 0;}
@@ -115,7 +117,7 @@
     .julia{background:var(--off-white);padding:96px 0;}
     .julia__inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .julia__foto{position:relative;}
-    .julia__foto img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 15%;display:block;}
+    .julia__foto img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;}
     .julia__foto-linha{position:absolute;top:20px;right:-20px;width:100%;height:100%;border:1px solid var(--areia);z-index:-1;}
     .julia__texto h2{font-family:var(--ft);font-size:clamp(2rem,3vw,2.6rem);font-weight:300;color:var(--petroleo);line-height:1.2;margin-bottom:16px;}
     .julia__texto h2 em{font-style:italic;color:var(--dourado);}
@@ -167,7 +169,6 @@
       .hero{grid-template-columns:1fr;min-height:auto;}
       .hero__conteudo{padding:60px 32px 48px;order:2;}
       .hero__imagem{height:55vw;order:1;}
-      .hero__credencial{right:16px;bottom:16px;}
       .identificacao__inner,.julia__inner{grid-template-columns:1fr;gap:48px;}
       .identificacao{padding:64px 0;}
       .julia__foto-linha{display:none;}
@@ -316,32 +317,26 @@
         <h2>Dúvidas <em>frequentes</em></h2>
       </div>
       <div class="faq__lista">
-
         <div class="faq__item">
           <button class="faq__pergunta" onclick="toggleFaq(this)">O clareamento causa sensibilidade?<span class="faq__icone"></span></button>
           <div class="faq__resposta"><p>Pode causar uma sensibilidade temporária em alguns casos. Por isso, antes de começar o procedimento é feita uma aplicação protetora que reduz significativamente esse efeito. Quem já teve sensibilidade em outros tratamentos pode fazer o clareamento com segurança, basta informar na avaliação.</p></div>
         </div>
-
         <div class="faq__item">
           <button class="faq__pergunta" onclick="toggleFaq(this)">O resultado parece artificial?<span class="faq__icone"></span></button>
           <div class="faq__resposta"><p>Não. O objetivo não é um branco de kit de farmácia. O clareamento profissional revitaliza a cor natural dos dentes, removendo manchas acumuladas. O resultado final harmoniza com a fisionomia de cada paciente, respeitando o que é natural para aquele sorriso.</p></div>
         </div>
-
         <div class="faq__item">
           <button class="faq__pergunta" onclick="toggleFaq(this)">Quanto tempo dura o resultado?<span class="faq__icone"></span></button>
           <div class="faq__resposta"><p>Depende dos hábitos de cada pessoa, principalmente alimentação e higiene. Com as orientações da Dra. Júlia, a maioria dos pacientes mantém o resultado por um bom período sem precisar de retoques frequentes. O Protocolo Diamond, por combinar consultório e casa, tende a ter maior duração.</p></div>
         </div>
-
         <div class="faq__item">
           <button class="faq__pergunta" onclick="toggleFaq(this)">Tenho restaurações ou coroas. Posso clarear?<span class="faq__icone"></span></button>
           <div class="faq__resposta"><p>O produto clareador atua apenas no dente natural, não em restaurações ou coroas. Na avaliação a Dra. Júlia mapeia o sorriso completo e planeja os ajustes necessários para que o resultado fique uniforme, sem diferença de tonalidade entre os dentes naturais e as restaurações.</p></div>
         </div>
-
         <div class="faq__item">
           <button class="faq__pergunta" onclick="toggleFaq(this)">Qual protocolo é indicado para mim?<span class="faq__icone"></span></button>
           <div class="faq__resposta"><p>Isso depende do grau de pigmentação, da sensibilidade, da rotina e do resultado que você quer. A avaliação existe exatamente para isso: a Dra. Júlia analisa o seu caso e indica o protocolo que vai funcionar melhor para você, sem generalização.</p></div>
         </div>
-
       </div>
     </div>
   </section>
@@ -350,7 +345,8 @@
     <div class="container">
       <div class="julia__inner">
         <div class="julia__foto">
-          <img src="https://static.wixstatic.com/media/0e09b2_b7ead3cdd0a346588214fe242b73c0e4~mv2.jpeg" alt="Dra. Júlia Hoss, cirurgiã-dentista em Campinas" loading="lazy">
+          <!-- Foto trocada: 16.38.44 jaleco braços cruzados, diferente do hero -->
+          <img src="https://static.wixstatic.com/media/0e09b2_127c6deb3844463b805a4cf317a8f31f~mv2.jpeg" alt="Dra. Júlia Hoss, cirurgiã-dentista em Campinas" loading="lazy">
           <div class="julia__foto-linha"></div>
         </div>
         <div class="julia__texto">
@@ -435,8 +431,9 @@
 
     function ev(nome,origem){if(typeof gtag!=='undefined')gtag('event',nome,{origem:origem});}
 
+    // FIX: usa dataset ou primeira classe para nome limpo no GA4
     var secaoVistas=new Set();
-    var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting&&!secaoVistas.has(entry.target.className)){secaoVistas.add(entry.target.className);ev('scroll_secao_clareamento',entry.target.className.split(' ')[0]);}});},{threshold:0.3});
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var nome=entry.target.classList[0];if(!secaoVistas.has(nome)){secaoVistas.add(nome);ev('scroll_secao_clareamento',nome);}}});},{threshold:0.3});
     document.querySelectorAll('section[class]').forEach(function(s){obs.observe(s);});
 
     var inicio=Date.now();var converteu=false;
