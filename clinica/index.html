@@ -117,6 +117,7 @@
     .hero__foto img {
       width: 100%;
       height: 100%;
+      min-height: 100vh;
       object-fit: cover;
       object-position: center top;
       display: block;
@@ -130,9 +131,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 56px 80px 56px;
-      background: var(--petroleo);
       align-items: flex-start;
+      padding: 80px 56px;
+      background: var(--petroleo);
     }
 
     .hero__pre {
@@ -780,13 +781,23 @@
       opacity: 0.9;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .barra-confianca__inner {
-        gap: 20px;
-        justify-content: flex-start;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
       .barra-item {
         font-size: 0.72rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .barra-confianca__inner {
+        gap: 12px;
+      }
+      .barra-item {
+        font-size: 0.68rem;
       }
     }
 
