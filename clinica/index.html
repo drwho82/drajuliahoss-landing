@@ -114,7 +114,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      padding: 80px 56px;
+      padding: 60px 56px 80px 56px;
       position: relative;
       z-index: 2;
     }
@@ -862,21 +862,48 @@
     @media (max-width: 960px) {
       .hero {
         grid-template-columns: 1fr;
-        grid-template-rows: 420px auto;
-        min-height: auto;
+        grid-template-rows: auto;
+        min-height: 100svh;
+        min-height: 100vh;
       }
 
+      /* Mobile: foto e texto lado a lado compactos, tudo above the fold */
       .hero__foto {
-        height: 420px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45%;
+        height: 100%;
+        z-index: 0;
       }
 
       .hero__foto img {
-        object-position: center 40%;
+        object-position: center 20%;
+        height: 100%;
       }
 
       .hero__conteudo {
-        padding: 48px 72px 56px 24px;
-        justify-content: flex-start;
+        position: relative;
+        z-index: 2;
+        width: 58%;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 48px 16px 48px 24px;
+        justify-content: center;
+        background: var(--petroleo);
+      }
+
+      /* Sombra suave separando texto da foto */
+      .hero__conteudo::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -24px;
+        width: 24px;
+        height: 100%;
+        background: linear-gradient(to right, var(--petroleo), transparent);
+        z-index: 3;
+        pointer-events: none;
       }
 
       .tratamentos__grid {
@@ -945,11 +972,23 @@
 
     @media (max-width: 480px) {
       .hero__pre {
-        font-size: 0.65rem;
-        letter-spacing: 0.1em;
+        font-size: 0.6rem;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
       }
       .hero__titulo {
-        font-size: 1.9rem;
+        font-size: clamp(1.4rem, 5vw, 1.9rem);
+        line-height: 1.2;
+      }
+      .hero__sub {
+        font-size: 0.85rem;
+      }
+      .hero__credencial span {
+        font-size: 0.68rem;
+      }
+      .btn-whatsapp {
+        font-size: 0.82rem;
+        padding: 13px 20px;
       }
     }
   </style>
