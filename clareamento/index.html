@@ -157,12 +157,7 @@
     .rodape a:hover{opacity:.8;}
 
     /* LGPD */
-    .lgpd-banner{position:fixed;bottom:0;left:0;right:0;background:rgba(30,44,58,.97);padding:20px 32px;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;transform:translateY(0);transition:transform .4s;}
-    .lgpd-banner.oculto{transform:translateY(100%);}
-    .lgpd-banner p{font-size:0.78rem;font-weight:300;color:var(--areia);line-height:1.6;flex:1;min-width:240px;}
-    .lgpd-banner a{color:var(--dourado);text-decoration:none;}
-    .lgpd-banner__btn{background:var(--dourado);color:var(--branco);border:none;padding:10px 24px;font-family:var(--fb);font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .2s;}
-    .lgpd-banner__btn:hover{background:#b8913f;}
+
 
     /* RESPONSIVO */
     @media(max-width:900px){
@@ -411,21 +406,13 @@
   <footer class="rodape">
     <div class="container">
       <div class="rodape__inner">
-        <p>© 2026 Dra. Júlia Hoss · CRO-SP 157 099<br>Rua Barbosa da Cunha, 754, Sala 10 · Campinas-SP</p>
-        <a href="https://dente.drajuliahoss.com/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>
+        <p>© 2026 Dra. Júlia Hoss · CRO-SP 157 099<br>Rua Barbosa da Cunha, 754, Sala 10 · Campinas-SP<br>
+        Ao utilizar este site, você concorda com nossa <a href="https://dente.drajuliahoss.com/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
       </div>
     </div>
   </footer>
 
-  <div class="lgpd-banner" id="lgpdBanner">
-    <p>Usamos cookies para melhorar sua experiência e mensurar o desempenho da página. Ao continuar navegando, você concorda com nossa <a href="https://dente.drajuliahoss.com/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
-    <button class="lgpd-banner__btn" onclick="aceitarCookies()">Entendido</button>
-  </div>
-
   <script>
-    function aceitarCookies(){localStorage.setItem('lgpd_cl','1');document.getElementById('lgpdBanner').classList.add('oculto');}
-    if(localStorage.getItem('lgpd_cl'))document.getElementById('lgpdBanner').classList.add('oculto');
-
     function toggleFaq(btn){var item=btn.parentElement;var aberto=item.classList.contains('aberto');document.querySelectorAll('.faq__item').forEach(function(i){i.classList.remove('aberto');});if(!aberto)item.classList.add('aberto');ev('faq_click_clareamento',btn.textContent.trim().substring(0,50));}
 
     function ev(nome,origem){if(typeof gtag!=='undefined')gtag('event',nome,{origem:origem});}
