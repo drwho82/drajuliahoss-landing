@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Dentista em Campinas | Dra. Júlia Hoss</title>
   <meta name="description" content="Dra. Júlia Hoss — dentista em Campinas. Atendimento particular com cuidado individual. Prevenção, reabilitação e estética. Agende pelo WhatsApp.">
 
@@ -18,7 +19,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================
@@ -33,8 +34,8 @@
       --areia-escura: #BFB8AF;
       --petroleo-light: #3d5166;
 
-      --font-titulo: 'Playfair Display', Georgia, serif;
-      --font-corpo:  'Lato', sans-serif;
+      --font-titulo: 'Cormorant Garamond', Georgia, serif;
+      --font-corpo:  'Jost', sans-serif;
 
       --max-width: 1140px;
       --radius: 4px;
@@ -879,7 +880,7 @@
     /* ============================================================
        RESPONSIVO
     ============================================================ */
-    @media (max-width: 960px) {
+    @media (max-width: 768px) {
       /* Hero mobile: coluna única — foto em cima, texto embaixo */
       .hero {
         grid-template-columns: 1fr;
@@ -1445,6 +1446,95 @@
           event_category: 'comportamento'
         });
       }
+    });
+
+    // GA4 — engajamento qualificado (scroll > 60% + tempo > 45s)
+    let engajamentoDisparado = false;
+    setInterval(() => {
+      if (engajamentoDisparado) return;
+      const scrollPct = (window.scrollY / document.body.scrollHeight) * 100;
+      const tempoS = (Date.now() - startTime) / 1000;
+      if (scrollPct > 60 && tempoS > 45) {
+        gtag('event', 'engajamento_qualificado_clinica', {
+          event_category: 'qualidade',
+          scroll_pct: Math.round(scrollPct),
+          tempo_s: Math.round(tempoS)
+        });
+        engajamentoDisparado = true;
+      }
+    }, 5000);
+
+    // GA4 — dwell time por seção
+    const dwellTimers = {};
+    const dwellObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const id = e.target.dataset.secao;
+        if (e.isIntersecting) {
+          dwellTimers[id] = Date.now();
+        } else if (dwellTimers[id]) {
+          const segundos = Math.round((Date.now() - dwellTimers[id]) / 1000);
+          if (segundos >= 3) {
+            gtag('event', 'dwell_secao_clinica', {
+              event_category: 'comportamento',
+              secao: id,
+              segundos
+            });
+          }
+          delete dwellTimers[id];
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-secao]').forEach(s => dwellObserver.observe(s));
+
+    // GA4 — scroll reverso (releitura)
+    let ultimoScroll = 0;
+    window.addEventListener('scroll', () => {
+      const atual = window.scrollY;
+      if (atual < ultimoScroll - 100) {
+        const secaoVisivel = [...document.querySelectorAll('[data-secao]')]
+          .find(s => s.getBoundingClientRect().top > 0 && s.getBoundingClientRect().top < window.innerHeight);
+        if (secaoVisivel) {
+          gtag('event', 'scroll_reverso_clinica', {
+            event_category: 'comportamento',
+            secao_releitura: secaoVisivel.dataset.secao
+          });
+        }
+      }
+      ultimoScroll = atual;
+    }, { passive: true });
+
+    // GA4 — troca de aba
+    let saiuEm = null;
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        saiuEm = Date.now();
+      } else if (saiuEm) {
+        const fora = Math.round((Date.now() - saiuEm) / 1000);
+        gtag('event', 'troca_aba_clinica', {
+          event_category: 'comportamento',
+          segundos_fora: fora
+        });
+        saiuEm = null;
+      }
+    });
+
+    // GA4 — hesitação no CTA (desktop)
+    document.querySelectorAll('.btn-whatsapp, .whats-flutuante').forEach(btn => {
+      let hoverInicio = null;
+      btn.addEventListener('mouseenter', () => { hoverInicio = Date.now(); });
+      btn.addEventListener('mouseleave', () => {
+        if (hoverInicio) {
+          const ms = Date.now() - hoverInicio;
+          if (ms > 800) {
+            gtag('event', 'hesitacao_cta_clinica', {
+              event_category: 'comportamento',
+              ms_hover: ms,
+              botao: btn.id || btn.className
+            });
+          }
+          hoverInicio = null;
+        }
+      });
     });
 
   </script>
