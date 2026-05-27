@@ -890,12 +890,12 @@
       .hero__foto {
         position: relative;
         width: 100%;
-        height: 200px;
+        height: 320px;
         overflow: hidden;
       }
 
       .hero__foto img {
-        object-position: center 10%;
+        object-position: center 15%;
         height: 100%;
         min-height: auto;
       }
@@ -928,6 +928,15 @@
       /* Mostrar barra de confiança inline dentro do hero */
       .hero__barra-mobile {
         display: flex;
+      }
+
+      .tratamentos,
+      .julia,
+      .depoimentos,
+      .consulta,
+      .mais-depoimentos,
+      .cta-final {
+        padding: 56px 0;
       }
 
       .tratamentos__grid {
@@ -1376,9 +1385,7 @@
       <p class="footer-lgpd__info">
         Dra. Júlia Hoss · CRO-SP 157 099 · Rua Barbosa da Cunha, 754, Sala 10, Campinas-SP<br>
         Atendimento particular · Aceita cartão de crédito<br>
-        <a href="https://dente.drajuliahoss.com/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>
-        &nbsp;·&nbsp;
-        Este site não coleta dados sem o seu consentimento.
+        Ao utilizar este site, você concorda com nossa <a href="https://dente.drajuliahoss.com/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.
       </p>
     </div>
   </footer>
@@ -1440,10 +1447,6 @@
       }
     });
 
-    // LGPD — consentimento implícito registrado via localStorage
-    if (!localStorage.getItem('lgpd_clinica')) {
-      localStorage.setItem('lgpd_clinica', 'aceito');
-    }
   </script>
 
 
